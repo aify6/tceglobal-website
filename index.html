@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Change Embassy | Coming Soon</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #07152b;
+      --secondary: #0f2244;
+      --accent: #ff6b00;
+      --accent-red: #ff2e2e;
+      --light: #ffffff;
+      --muted: #cfd6e4;
+      --glass: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 22px;
+      --transition: all 0.35s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,107,0,0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,46,46,0.15), transparent 35%),
+        linear-gradient(135deg, #04101f 0%, #07152b 40%, #0b1d39 100%);
+      color: var(--light);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* PAGE LOADER */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: #020814;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-circle {
+      width: 70px;
+      height: 70px;
+      border: 4px solid rgba(255,255,255,0.08);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(4, 16, 31, 0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-container {
+      max-width: 1250px;
+      margin: auto;
+      padding: 1rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+    }
+
+    .brand img {
+      width: 46px;
+      height: auto;
+    }
+
+    .brand span {
+      font-size: 1rem;
+    }
+
+    .nav-btn {
+      padding: 12px 22px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-red));
+      border: none;
+      border-radius: 999px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 10px 30px rgba(255,107,0,0.3);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 1.5rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(255,107,0,0.12), transparent 70%);
+      top: -200px;
+      right: -120px;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,46,46,0.1), transparent 70%);
+      bottom: -180px;
+      left: -150px;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text {
+      animation: fadeUp 1.1s ease;
+    }
+
+    .hero-logo {
+      width: 120px;
+      margin-bottom: 1.8rem;
+      filter: drop-shadow(0 10px 25px rgba(0,0,0,0.3));
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.8rem, 8vw, 6rem);
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 10%, #ff8f45 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      font-size: 1.12rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    /* COUNTDOWN */
+    .countdown-wrapper {
+      backdrop-filter: blur(20px);
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      animation: fadeUp 1.3s ease;
+    }
+
+    .countdown-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .time-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 1.4rem 1rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .time-box:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .time-box h2 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .time-box span {
+      color: var(--muted);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* FORM */
+    .notify-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .notify-form input {
+      flex: 1;
+      min-width: 220px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.06);
+      color: white;
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .notify-form input:focus {
+      border-color: rgba(255,107,0,0.6);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .notify-form input::placeholder {
+      color: rgba(255,255,255,0.55);
+    }
+
+    .notify-form button {
+      padding: 16px 24px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-red));
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 15px 40px rgba(255,107,0,0.25);
+    }
+
+    .notify-form button:hover {
+      transform: translateY(-2px);
+    }
+
+    .helper-text {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 1.5rem 3rem;
+      text-align: center;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.95rem;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* FLOATING ORBS */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+      animation: float 10s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .orb1 {
+      width: 180px;
+      height: 180px;
+      background: #ff6b00;
+      top: 15%;
+      left: 8%;
+    }
+
+    .orb2 {
+      width: 250px;
+      height: 250px;
+      background: #ff2e2e;
+      bottom: 10%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-18px);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      h1 {
+        font-size: 4rem;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .countdown-wrapper {
+        padding: 1.5rem;
+      }
+
+      .nav-container {
+        padding: 1rem 1.2rem;
+      }
+
+      .brand span {
+        display: none;
+      }
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 3.2rem;
+      }
+
+      .countdown {
+        gap: 0.8rem;
+      }
+
+      .time-box {
+        padding: 1rem 0.6rem;
+      }
+
+      .time-box h2 {
+        font-size: 1.6rem;
+      }
+
+      .notify-form {
+        flex-direction: column;
+      }
+
+      .notify-form button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-circle"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <div class="brand">
+        <img src="LOGO1 2.png" alt="The Change Embassy Logo">
+        <span>The Change Embassy</span>
+      </div>
+
+      <a href="#notify">
+        <button class="nav-btn">Get Notified</button>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+
+    <div class="hero-content">
+
+      <!-- LEFT -->
+      <div class="hero-text">
+        <!-- <img src="LOGO1.png" alt="Church Logo" class="hero-logo"> -->
+
+        <div class="eyebrow">
+          A New Digital Experience Is Coming
+        </div>
+
+        <h1>
+          <span class="gradient-text">Coming Soon</span>
+        </h1>
+
+        <p>
+          The Change Embassy is preparing a beautiful new online experience designed to inspire faith,
+          transformation, purpose, and community. We cannot wait to welcome you.
+        </p>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="countdown-wrapper" id="notify">
+
+        <div class="countdown-title">
+          Launch Countdown
+        </div>
+
+        <div class="countdown">
+          <div class="time-box">
+            <h2 id="days">00</h2>
+            <span>Days</span>
+          </div>
+
+          <div class="time-box">
+            <h2 id="hours">00</h2>
+            <span>Hours</span>
+          </div>
+
+          <div class="time-box">
+            <h2 id="minutes">00</h2>
+            <span>Minutes</span>
+          </div>
+
+          <div class="time-box">
+            <h2 id="seconds">00</h2>
+            <span>Seconds</span>
+          </div>
+        </div>
+
+        <form class="notify-form">
+          <input type="email" placeholder="Enter your email address" required>
+          <button type="submit">Notify Me</button>
+        </form>
+
+        <div class="helper-text">
+          Be the first to know when we officially launch.
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 The Change Embassy. All rights reserved.
+  </footer>
+
+  <script>
+    // PAGE LOADER
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      setTimeout(() => {
+        loader.classList.add("hidden");
+      }, 700);
+    });
+
+    // COUNTDOWN TO NEXT SUNDAY 10AM
+    function getNextSundayAt10AM() {
+      const now = new Date();
+      const target = new Date(now);
+
+      const day = now.getDay();
+      const daysUntilSunday = (7 - day) % 7 || 7;
+
+      target.setDate(now.getDate() + daysUntilSunday);
+      target.setHours(10, 0, 0, 0);
+
+      return target;
+    }
+
+    const countdownDate = getNextSundayAt10AM().getTime();
+
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      if (distance < 0) {
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = String(days).padStart(2, '0');
+      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+    }, 1000);
+
+    // FORM SUBMIT DEMO
+    document.querySelector(".notify-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const button = this.querySelector("button");
+      button.innerText = "Subscribed ✓";
+      button.style.opacity = "0.9";
+
+      setTimeout(() => {
+        button.innerText = "Notify Me";
+      }, 3000);
+
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
