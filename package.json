@@ -1,0 +1,17 @@
+{
+  "name": "tceglobal-website",
+  "version": "1.0.0",
+  "description": "The Change Embassy - Coming Soon Website",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static HTML'",
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
