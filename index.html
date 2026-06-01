@@ -1,588 +1,818 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Change Embassy | Coming Soon</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Change Embassy – A vibrant community rooted in African heritage and Kingdom power, where worship, wisdom, and transformation come alive. Join us Sundays at 8:00 AM in Abuja.">
 
-  <!-- Google Fonts -->
+  <title>The Change Embassy – Experience God. Encounter Change.</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.tceglobal.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:url"          content="https://www.tceglobal.com/">
+  <meta property="og:title"        content="The Change Embassy – Experience God. Encounter Change.">
+  <meta property="og:description"  content="A vibrant community rooted in African heritage and Kingdom power, where worship, wisdom, and transformation come alive. Join us Sundays at 8:00 AM in Abuja.">
+  <meta property="og:image"        content="https://www.tceglobal.com/assets/images/og-cover.jpg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale"       content="en_NG">
+  <meta property="og:site_name"    content="The Change Embassy">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="The Change Embassy">
+  <meta name="twitter:description" content="Experience God. Encounter Change. Join us in Abuja every Sunday at 8:00 AM.">
+  <meta name="twitter:image"       content="https://www.tceglobal.com/assets/images/og-cover.jpg">
+
+  <!-- Geo tags -->
+  <meta name="geo.region"    content="NG-FC">
+  <meta name="geo.placename" content="Abuja, Nigeria">
+
+  <!-- Favicons -->
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/images/favicon.ico" sizes="any">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Church",
+    "name": "The Change Embassy",
+    "url": "https://www.tceglobal.com",
+    "logo": "https://www.tceglobal.com/assets/images/logo-with-text.png",
+    "image": "https://www.tceglobal.com/assets/images/og-cover.jpg",
+    "description": "A vibrant community rooted in African heritage and Kingdom power.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "794 Ngozi Okonjo-Iweala Way, HOKF Gardens",
+      "addressLocality": "Utako, Abuja",
+      "postalCode": "900108",
+      "addressCountry": "NG"
+    },
+    "telephone": "+2348151433007",
+    "email": "hello@tceglobal.com",
+    "openingHours": ["Su 08:00-10:00", "We 18:00-20:00"],
+    "sameAs": [
+      "https://www.instagram.com/thechangeembassy",
+      "https://www.facebook.com/thechangeembassy",
+      "https://www.youtube.com/@thechangeembassy"
+    ]
+  }
+  </script>
+
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="assets/images/background.png">
+
+  <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-  <style>
-    :root {
-      --primary: #07152b;
-      --secondary: #0f2244;
-      --accent: #ff6b00;
-      --accent-red: #ff2e2e;
-      --light: #ffffff;
-      --muted: #cfd6e4;
-      --glass: rgba(255,255,255,0.08);
-      --border: rgba(255,255,255,0.12);
-      --shadow: 0 20px 60px rgba(0,0,0,0.35);
-      --radius: 22px;
-      --transition: all 0.35s ease;
-    }
+  <!-- Google Fonts — only 4 weights -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(255,107,0,0.18), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(255,46,46,0.15), transparent 35%),
-        linear-gradient(135deg, #04101f 0%, #07152b 40%, #0b1d39 100%);
-      color: var(--light);
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    /* PAGE LOADER */
-    .loader {
-      position: fixed;
-      inset: 0;
-      background: #020814;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-    }
-
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader-circle {
-      width: 70px;
-      height: 70px;
-      border: 4px solid rgba(255,255,255,0.08);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* NAVIGATION */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(18px);
-      background: rgba(4, 16, 31, 0.6);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .nav-container {
-      max-width: 1250px;
-      margin: auto;
-      padding: 1rem 1.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-    }
-
-    .brand img {
-      width: 46px;
-      height: auto;
-    }
-
-    .brand span {
-      font-size: 1rem;
-    }
-
-    .nav-btn {
-      padding: 12px 22px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-red));
-      border: none;
-      border-radius: 999px;
-      color: white;
-      cursor: pointer;
-      font-weight: 600;
-      transition: var(--transition);
-      box-shadow: 0 10px 30px rgba(255,107,0,0.3);
-    }
-
-    .nav-btn:hover {
-      transform: translateY(-2px) scale(1.02);
-    }
-
-    /* HERO */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 5rem 1.5rem 4rem;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 650px;
-      height: 650px;
-      background: radial-gradient(circle, rgba(255,107,0,0.12), transparent 70%);
-      top: -200px;
-      right: -120px;
-      z-index: 0;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(255,46,46,0.1), transparent 70%);
-      bottom: -180px;
-      left: -150px;
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1100px;
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .hero-text {
-      animation: fadeUp 1.1s ease;
-    }
-
-    .hero-logo {
-      width: 120px;
-      margin-bottom: 1.8rem;
-      filter: drop-shadow(0 10px 25px rgba(0,0,0,0.3));
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.8rem, 8vw, 6rem);
-      line-height: 0.95;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #fff 10%, #ff8f45 90%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-text p {
-      font-size: 1.12rem;
-      line-height: 1.8;
-      color: var(--muted);
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
-
-    /* COUNTDOWN */
-    .countdown-wrapper {
-      backdrop-filter: blur(20px);
-      background: var(--glass);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      box-shadow: var(--shadow);
-      animation: fadeUp 1.3s ease;
-    }
-
-    .countdown-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .time-box {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 1.4rem 1rem;
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    .time-box:hover {
-      transform: translateY(-4px);
-      background: rgba(255,255,255,0.08);
-    }
-
-    .time-box h2 {
-      font-size: 2rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .time-box span {
-      color: var(--muted);
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    /* FORM */
-    .notify-form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .notify-form input {
-      flex: 1;
-      min-width: 220px;
-      padding: 16px 18px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.06);
-      color: white;
-      font-size: 1rem;
-      outline: none;
-      transition: var(--transition);
-    }
-
-    .notify-form input:focus {
-      border-color: rgba(255,107,0,0.6);
-      background: rgba(255,255,255,0.08);
-    }
-
-    .notify-form input::placeholder {
-      color: rgba(255,255,255,0.55);
-    }
-
-    .notify-form button {
-      padding: 16px 24px;
-      border: none;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-red));
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 15px 40px rgba(255,107,0,0.25);
-    }
-
-    .notify-form button:hover {
-      transform: translateY(-2px);
-    }
-
-    .helper-text {
-      margin-top: 1rem;
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.6);
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 2rem 1.5rem 3rem;
-      text-align: center;
-      color: rgba(255,255,255,0.55);
-      font-size: 0.95rem;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* FLOATING ORBS */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.18;
-      animation: float 10s ease-in-out infinite;
-      z-index: 0;
-    }
-
-    .orb1 {
-      width: 180px;
-      height: 180px;
-      background: #ff6b00;
-      top: 15%;
-      left: 8%;
-    }
-
-    .orb2 {
-      width: 250px;
-      height: 250px;
-      background: #ff2e2e;
-      bottom: 10%;
-      right: 10%;
-      animation-delay: 2s;
-    }
-
-    @keyframes float {
-      0%,100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-18px);
-      }
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .countdown {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      h1 {
-        font-size: 4rem;
-      }
-
-      .hero {
-        padding-top: 3rem;
-      }
-
-      .countdown-wrapper {
-        padding: 1.5rem;
-      }
-
-      .nav-container {
-        padding: 1rem 1.2rem;
-      }
-
-      .brand span {
-        display: none;
-      }
-    }
-
-    @media (max-width: 500px) {
-      h1 {
-        font-size: 3.2rem;
-      }
-
-      .countdown {
-        gap: 0.8rem;
-      }
-
-      .time-box {
-        padding: 1rem 0.6rem;
-      }
-
-      .time-box h2 {
-        font-size: 1.6rem;
-      }
-
-      .notify-form {
-        flex-direction: column;
-      }
-
-      .notify-form button {
-        width: 100%;
-      }
-    }
-  </style>
+  <!-- Site styles -->
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
 <body>
 
-  <!-- LOADER -->
-  <div class="loader" id="loader">
-    <div class="loader-circle"></div>
+<noscript>
+  <style>
+    .kingdom-card, .dept-card, .event-card, .resource-card, .leader-card {
+      opacity: 1 !important; transform: none !important;
+    }
+  </style>
+</noscript>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav id="main-nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo">
+    <img
+      src="assets/images/logo-with-text.png"
+      alt="The Change Embassy"
+      class="nav-logo-img"
+      width="160"
+      height="56"
+    >
+  </a>
+
+  <div class="nav-links" id="mobile-menu" role="menubar">
+    <a href="index.html" role="menuitem">Home</a>
+    <a href="about.html" role="menuitem">About Us</a>
+    <a href="leadership.html" role="menuitem">Leadership</a>
+    <a href="ministries.html" role="menuitem">Ministries</a>
+    <a href="contact.html" role="menuitem">Contact</a>
   </div>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-container">
-      <div class="brand">
-        <img src="LOGO1 2.png" alt="The Change Embassy Logo">
-        <span>The Change Embassy</span>
-      </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="give.html" class="nav-give">Give</a>
+    <button
+      class="nav-hamburger"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      onclick="toggleMobileMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
 
-      <a href="#notify">
-        <button class="nav-btn">Get Notified</button>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-content animate-in">
+    <div class="hero-badge">WORSHIP • WISDOM • POWER</div>
+
+    <h1>
+      Experience God.<br>
+      <span class="hero-line-two">Encounter Change.</span>
+    </h1>
+
+    <p class="hero-sub">
+      We are a vibrant community rooted in African heritage and Kingdom power,
+      where worship, wisdom, and transformation come alive.
+    </p>
+
+    <div class="hero-ctas animate-in-delay-1">
+      <a href="visit.html" class="btn-primary">Join Us This Sunday →</a>
+      <button type="button" class="btn-outline" id="watch-live-btn" aria-label="Watch live service">▶ Watch Live Service</button>
+    </div>
+
+    <div class="hero-services animate-in-delay-2">
+      <div class="hero-service-item">
+        <span class="hero-service-label">Sunday Service</span>
+        <span class="hero-service-time">8:00 AM</span>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+      <div class="hero-service-item">
+        <span class="hero-service-label">Wednesday Bible Study</span>
+        <span class="hero-service-time">6:00 PM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ MANDATE & VISION ══════════════════ -->
+<section class="mandate" id="mandate">
+  <div class="mandate-top">
+    <div class="mandate-info">
+      <h2>Our <span>Mandate</span><br>&amp; Vision</h2>
+      <p class="mandate-desc">
+        To raise and empower believers who will influence society through spiritual growth,
+        kingdom leadership, and transformational living.
+      </p>
+      <div class="mandate-ctas">
+        <a href="about.html" class="btn-red">Learn More About Us</a>
+        <a href="about.html#history" class="btn-dark">Our History</a>
+      </div>
+    </div>
+
+    <div class="mandate-values-grid">
+      <div class="value-card">
+        <div class="value-card-icon"><i class="fa fa-church" aria-hidden="true"></i></div>
+        <div class="value-card-title">Christ-Centered</div>
+        <div class="value-card-desc">Putting Jesus at the heart of everything we do.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-card-icon"><i class="fa fa-gem" aria-hidden="true"></i></div>
+        <div class="value-card-title">Integrity</div>
+        <div class="value-card-desc">Living with radical honesty and godly character.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-card-icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div class="value-card-title">Excellence</div>
+        <div class="value-card-desc">Doing our best as unto the Lord in all spheres.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-card-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+        <div class="value-card-title">Love</div>
+        <div class="value-card-desc">Fostering a family of belonging and compassion.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mandate-gallery">
+    <div class="mandate-gallery-item" role="img" aria-label="Church gathering"></div>
+    <div class="mandate-gallery-item" role="img" aria-label="Ministry in action"></div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ LEADERS ══════════════════ -->
+<section class="leaders" id="leaders">
+  <div class="leaders-header">
+    <div class="leaders-left">
+      <div class="leaders-badge">
+        <i class="fa fa-book" aria-hidden="true"></i> OUR LEADERS
+      </div>
+      <div class="leaders-title">God's <span>Hands</span> Over Us</div>
+    </div>
+    <div class="leaders-controls">
+      <button class="leaders-btn" id="leaders-prev" aria-label="Previous leader">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <button class="leaders-btn" id="leaders-next" aria-label="Next leader">
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </button>
+      <a href="leadership.html" class="btn-see-more">See More</a>
+    </div>
+  </div>
+
+  <div class="leaders-track" id="leaders-track" role="list">
+    <div class="leader-card" role="listitem">
+      <img src="assets/images/pastor1.png" alt="Dr. Bukola Williams – Lead Pastor" loading="lazy" width="340" height="420">
+      <div class="leader-card-body">
+        <div class="leader-name">DR. Bukola Williams</div>
+        <div class="leader-title">Lead Pastor</div>
+      </div>
+    </div>
+
+    <div class="leader-card" role="listitem">
+      <img src="assets/images/pastor2.png" alt="Pst. Blessing Bukola Williams – Co-Pastor" loading="lazy" width="340" height="420">
+      <div class="leader-card-body">
+        <div class="leader-name">Pst. Blessing Bukola Williams</div>
+        <div class="leader-title">Co-Pastor</div>
+      </div>
+    </div>
+
+    <div class="leader-card" role="listitem">
+      <img src="assets/images/pastor3.png" alt="Guest Minister" loading="lazy" width="340" height="420">
+      <div class="leader-card-body">
+        <div class="leader-name">DR. Bukola Williams</div>
+        <div class="leader-title">Lead Pastor</div>
+      </div>
+    </div>
+
+    <div class="leader-card" role="listitem">
+      <img src="assets/images/pastor1.png" alt="Elder &amp; Leadership Team" loading="lazy" width="340" height="420">
+      <div class="leader-card-body">
+        <div class="leader-name">Elder &amp; Team</div>
+        <div class="leader-title">Leadership Team</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ KINGDOM DUTY ══════════════════ -->
+<section class="kingdom" id="kingdom">
+  <div class="kingdom-header">
+    <h2>
+      Expressions of our<br>
+      <span class="kingdom-duty-gradient">Kingdom Duty</span>
+    </h2>
+    <p class="kingdom-sub">
+      Specialized platforms designed to nurture specific groups and fulfill our global mandate.
+    </p>
+  </div>
+
+  <div class="kingdom-grid">
+    <div class="kingdom-card">
+      <div class="kingdom-icon-box">
+        <i class="fa-solid fa-hands-praying kingdom-icon" aria-hidden="true"></i>
+      </div>
+      <div class="kingdom-name">Prayer Hotspot</div>
+      <div class="kingdom-desc">Dedicated to intercession, revival prayers, and spiritual awakening.</div>
+    </div>
+
+    <div class="kingdom-card">
+      <div class="kingdom-icon-box">
+        <i class="fa-solid fa-users kingdom-icon" aria-hidden="true"></i>
+      </div>
+      <div class="kingdom-name">The Change Makers</div>
+      <div class="kingdom-desc">Leadership driven community empowering believers to influence culture.</div>
+    </div>
+
+    <div class="kingdom-card">
+      <div class="kingdom-icon-box">
+        <i class="fa-solid fa-handshake kingdom-icon" aria-hidden="true"></i>
+      </div>
+      <div class="kingdom-name">Men Mentoring Men</div>
+      <div class="kingdom-desc">Brotherhood focused on accountability, spiritual growth, and purpose.</div>
+    </div>
+
+    <div class="kingdom-card">
+      <div class="kingdom-icon-box">
+        <i class="fa-solid fa-venus kingdom-icon" aria-hidden="true"></i>
+      </div>
+      <div class="kingdom-name">Daughters of DBW</div>
+      <div class="kingdom-desc">Women focused ministry nurturing spiritual strength and wisdom.</div>
+    </div>
+
+    <div class="kingdom-card">
+      <div class="kingdom-icon-box">
+        <i class="fa-solid fa-hand-holding-medical kingdom-icon" aria-hidden="true"></i>
+      </div>
+      <div class="kingdom-name">Medical Outreaches</div>
+      <div class="kingdom-desc">Providing healthcare support and community impact initiatives.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ SERVICE DEPARTMENTS ══════════════════ -->
+<section class="departments" id="departments">
+  <div class="departments-header">
+    <div class="departments-left">
+      <h2>Service Departments</h2>
+      <p class="departments-sub">
+        Every member has a place to serve. Discover where your gifts align with the vision of TCE.
+      </p>
+    </div>
+    <a href="ministries.html" class="btn-view-all">View All Units <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+  </div>
+
+  <div class="departments-grid">
+    <div class="dept-card">
+      <div class="dept-icon-box"><i class="fa-solid fa-music dept-icon" aria-hidden="true"></i></div>
+      <div class="dept-name">Worship &amp; Music</div>
+      <div class="dept-desc">Leading the congregation into God's presence through soulful praise.</div>
+      <a href="ministries.html" class="dept-join">Join Unit <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-icon-box"><i class="fa-solid fa-video dept-icon" aria-hidden="true"></i></div>
+      <div class="dept-name">Media &amp; Tech</div>
+      <div class="dept-desc">Capturing, streaming, and amplifying the message of the Kingdom.</div>
+      <a href="ministries.html" class="dept-join">Join Unit <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-icon-box"><i class="fa-solid fa-child dept-icon" aria-hidden="true"></i></div>
+      <div class="dept-name">Children's Ministry</div>
+      <div class="dept-desc">Nurturing the next generation in the ways and wisdom of Christ.</div>
+      <a href="ministries.html" class="dept-join">Join Unit <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-icon-box"><i class="fa-solid fa-hands-helping dept-icon" aria-hidden="true"></i></div>
+      <div class="dept-name">Hospitality</div>
+      <div class="dept-desc">Creating a warm, welcoming environment for every visitor.</div>
+      <a href="ministries.html" class="dept-join">Join Unit <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-icon-box"><i class="fa-solid fa-paint-brush dept-icon" aria-hidden="true"></i></div>
+      <div class="dept-name">Creative Arts</div>
+      <div class="dept-desc">Using dance, drama, and visual arts to glorify God.</div>
+      <a href="ministries.html" class="dept-join">Join Unit <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-icon-box"><i class="fa-solid fa-globe dept-icon" aria-hidden="true"></i></div>
+      <div class="dept-name">Outreach</div>
+      <div class="dept-desc">Sharing God's love with our local and global community.</div>
+      <a href="ministries.html" class="dept-join">Join Unit <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ PARTNER WITH THE VISION ══════════════════ -->
+<section class="partner" id="give">
+  <div class="partner-inner">
+    <div class="partner-copy">
+      <div class="partner-label">✦ Giving is an Act of Worship</div>
+      <h2>Partner With<br>the <span>Vision</span></h2>
+      <p class="partner-sub">
+        Your seeds empower thousands and accelerate the gospel to the ends of the earth.
+      </p>
+      <a href="give.html" class="btn-give-now">Give Now →</a>
+    </div>
+
+    <div class="partner-right">
+      <div class="partner-image">
+        <img src="assets/images/offering.jpeg" alt="Offering – Partner with the Vision" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ EVENTS ══════════════════ -->
+<section class="events" id="events">
+  <div class="container">
+    <div class="events-header">
+      <div class="events-badge">
+        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>&nbsp;Upcoming Events
+      </div>
+      <h2>Don't Miss What's Happening</h2>
+      <p class="events-sub">
+        From worship nights to community outreach, there's always something meaningful
+        happening at our church.
+      </p>
+    </div>
+
+    <!-- Featured Event Banner -->
+    <article
+      class="featured-event"
+      style="background-image: url('assets/images/prophetic-shift.png');"
+      aria-label="Featured Event: Thrive Conference"
+    >
+      <div class="featured-inner">
+        <div class="featured-left">
+          <div class="event-type-pill">ANNUAL CONFERENCE</div>
+          <div class="featured-title">Thrive Conference</div>
+          <p class="featured-desc">
+            An explosive night of worship, music, and powerful teaching designed to renew and
+            empower the next generation of kingdom leaders.
+          </p>
+
+          <div class="event-details-row">
+            <div class="event-pill"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Friday, June 24</div>
+            <div class="event-pill"><i class="fa fa-clock"    aria-hidden="true"></i>&nbsp;7:00 PM</div>
+            <div class="event-pill"><i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;Main Sanctuary</div>
+            <div class="event-pill"><i class="fa fa-users"   aria-hidden="true"></i>&nbsp;127 attending</div>
+          </div>
+
+          <div class="countdown" aria-live="polite" aria-label="Countdown to Thrive Conference" id="countdown-wrap">
+            <div class="countdown-box">
+              <span class="countdown-num" id="cd-days">00</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-num" id="cd-hrs">00</span>
+              <span class="countdown-label">Hrs</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-num" id="cd-min">00</span>
+              <span class="countdown-label">Min</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-num" id="cd-sec">00</span>
+              <span class="countdown-label">Sec</span>
+            </div>
+          </div>
+          <div id="event-concluded" class="event-concluded-msg" style="display:none;">
+            <span>✦ Event Concluded — Thank you for joining us!</span>
+          </div>
+        </div>
+
+        <div class="featured-cta">
+          <a href="events.html" class="btn-register">
+            Register Now &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Events Grid -->
+    <div class="events-grid">
+      <article class="event-card">
+        <div class="event-card-top" style="background-image: url('assets/images/prophetic-shift.png');">
+          <div class="event-card-label">Monthly Encounter</div>
+          <div class="event-card-date">Feb 14–15</div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-title">Prophetic Shift</div>
+          <p class="event-card-desc">Two days of empowerment, connection, and spiritual renewal for women of all ages.</p>
+          <div class="event-card-meta">
+            <span><i class="fa fa-clock" aria-hidden="true"></i>&nbsp;9:00 AM</span>
+            <span><i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;Fellowship Hall</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card-top" style="background-image: url('assets/images/medical-outreach.png');">
+          <div class="event-card-label" style="background:#ffb84d">Outreach</div>
+          <div class="event-card-date">Saturday 1</div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-title">Community Outreach Day</div>
+          <p class="event-card-desc">Join us as we serve our community through various outreach projects and initiatives.</p>
+          <div class="event-card-meta">
+            <span><i class="fa fa-clock" aria-hidden="true"></i>&nbsp;10:00 AM</span>
+            <span><i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;Various Locations</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card-top" style="background-image: url('assets/images/marriage-enrichment.png');">
+          <div class="event-card-label" style="background:#ffd166">Couples</div>
+          <div class="event-card-date">Saturday 8</div>
+        </div>
+        <div class="event-card-body">
+          <div class="event-card-title">Marriage Enrichment Workshop</div>
+          <p class="event-card-desc">Strengthen your marriage with practical tools and biblical wisdom for lasting love.</p>
+          <div class="event-card-meta">
+            <span><i class="fa fa-clock" aria-hidden="true"></i>&nbsp;6:00 PM</span>
+            <span><i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;Church Hall</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="events-view-all">
+      <a href="events.html" class="btn-outline-dark">
+        View All Events &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>
       </a>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero">
 
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
+<!-- ══════════════════ KINGDOM RESOURCES ══════════════════ -->
+<section class="resources" id="resources">
+  <div class="resources-header">
+    <div class="section-label">EMPOWER YOUR MIND</div>
+    <h2>Grow Through Kingdom Resources</h2>
+    <p>
+      Access transformational teachings, books, and digital materials specifically curated
+      to empower the African church and global believers.
+    </p>
+  </div>
 
-    <div class="hero-content">
-
-      <!-- LEFT -->
-      <div class="hero-text">
-        <!-- <img src="LOGO1.png" alt="Church Logo" class="hero-logo"> -->
-
-        <div class="eyebrow">
-          A New Digital Experience Is Coming
-        </div>
-
-        <h1>
-          <span class="gradient-text">Coming Soon</span>
-        </h1>
-
-        <p>
-          The Change Embassy is preparing a beautiful new online experience designed to inspire faith,
-          transformation, purpose, and community. We cannot wait to welcome you.
-        </p>
+  <div class="resources-grid">
+    <div class="resource-card active">
+      <div class="resource-img" style="background-image: url('assets/images/school-of-ministry.png');">
+        <div class="resource-book-icon"><i class="fa fa-book" aria-hidden="true"></i></div>
+        <div class="resource-tag">Book</div>
+        <a href="resources.html" class="resource-action">Buy Now</a>
       </div>
-
-      <!-- RIGHT -->
-      <div class="countdown-wrapper" id="notify">
-
-        <div class="countdown-title">
-          Launch Countdown
-        </div>
-
-        <div class="countdown">
-          <div class="time-box">
-            <h2 id="days">00</h2>
-            <span>Days</span>
-          </div>
-
-          <div class="time-box">
-            <h2 id="hours">00</h2>
-            <span>Hours</span>
-          </div>
-
-          <div class="time-box">
-            <h2 id="minutes">00</h2>
-            <span>Minutes</span>
-          </div>
-
-          <div class="time-box">
-            <h2 id="seconds">00</h2>
-            <span>Seconds</span>
-          </div>
-        </div>
-
-        <form class="notify-form">
-          <input type="email" placeholder="Enter your email address" required>
-          <button type="submit">Notify Me</button>
-        </form>
-
-        <div class="helper-text">
-          Be the first to know when we officially launch.
-        </div>
-
+      <div class="resource-body">
+        <div class="resource-name">The Kingdom Leader</div>
+        <p class="resource-desc">Essential principles for leading with kingdom authority and godly wisdom.</p>
       </div>
-
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2026 The Change Embassy. All rights reserved.
-  </footer>
+    <div class="resource-card">
+      <div class="resource-img" style="background-image: url('assets/images/background.png');">
+        <div class="resource-book-icon"><i class="fa fa-book-open" aria-hidden="true"></i></div>
+        <div class="resource-tag">Book</div>
+      </div>
+      <div class="resource-body">
+        <div class="resource-name">Restoration Secrets</div>
+        <p class="resource-desc">Discover the hidden keys to healing, wholeness, and divine restoration.</p>
+      </div>
+    </div>
 
-  <script>
-    // PAGE LOADER
-    window.addEventListener("load", () => {
-      const loader = document.getElementById("loader");
-      setTimeout(() => {
-        loader.classList.add("hidden");
-      }, 700);
-    });
+    <div class="resource-card">
+      <div class="resource-img" style="background-image: url('assets/images/cant-wait-to-meet-you.png');">
+        <div class="resource-book-icon"><i class="fa fa-magic" aria-hidden="true"></i></div>
+        <div class="resource-tag">Book</div>
+      </div>
+      <div class="resource-body">
+        <div class="resource-name">The Power of Choice</div>
+        <p class="resource-desc">Understanding how your daily decisions shape your destiny and kingdom impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // COUNTDOWN TO NEXT SUNDAY 10AM
-    function getNextSundayAt10AM() {
-      const now = new Date();
-      const target = new Date(now);
 
-      const day = now.getDay();
-      const daysUntilSunday = (7 - day) % 7 || 7;
+<!-- ══════════════════ NEW HERE ══════════════════ -->
+<section class="new-here" id="visit">
+  <div class="new-here-left">
+    <h2>We Can't Wait to<br>Meet You</h2>
+    <p class="new-here-desc">
+      Visiting a new church can feel overwhelming, but we've got you covered.
+      Here's everything you need to know for a great first visit.
+    </p>
 
-      target.setDate(now.getDate() + daysUntilSunday);
-      target.setHours(10, 0, 0, 0);
+    <div class="new-here-items">
+      <div class="new-here-item">
+        <div class="new-here-item-icon"><i class="fa fa-clock" aria-hidden="true"></i></div>
+        <div class="new-here-item-content">
+          <div class="new-here-item-title">Service Times</div>
+          <div class="new-here-item-desc">Sundays at 8:00 AM &amp; 10:30 AM. Wednesday Bible Study at 6:30 PM.</div>
+        </div>
+      </div>
 
-      return target;
-    }
+      <div class="new-here-item">
+        <div class="new-here-item-icon"><i class="fa fa-map-marker-alt" aria-hidden="true"></i></div>
+        <div class="new-here-item-content">
+          <div class="new-here-item-title">Location &amp; Parking</div>
+          <div class="new-here-item-desc">We're at Wuye Utako, Abuja. Free parking available. Greeters will help you.</div>
+        </div>
+      </div>
 
-    const countdownDate = getNextSundayAt10AM().getTime();
+      <div class="new-here-item">
+        <div class="new-here-item-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+        <div class="new-here-item-content">
+          <div class="new-here-item-title">What to Expect</div>
+          <div class="new-here-item-desc">Warm welcomes, uplifting worship, relevant teaching. Come as you are.</div>
+        </div>
+      </div>
 
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
+      <div class="new-here-item">
+        <div class="new-here-item-icon"><i class="fa fa-car" aria-hidden="true"></i></div>
+        <div class="new-here-item-content">
+          <div class="new-here-item-title">Kids &amp; Families</div>
+          <div class="new-here-item-desc">Safe, fun programs for all ages. Easy and secure check-in.</div>
+        </div>
+      </div>
+    </div>
 
-      if (distance < 0) {
-        clearInterval(interval);
-        return;
-      }
+    <a href="visit.html" class="btn-gradient">Plan Your Visit →</a>
+  </div>
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  <div class="new-here-right">
+    <div class="new-here-photo" role="img" aria-label="Welcoming our new visitors"></div>
+    <div class="new-here-faq-card">
+      <div class="new-here-faq-title">
+        <i class="fa fa-star" aria-hidden="true"></i> Common Questions
+      </div>
+      <div class="new-here-faq-list">
+        <div class="new-here-faq-item">
+          <span class="new-here-faq-bullet">✓</span> What should I wear?
+        </div>
+        <div class="new-here-faq-item">
+          <span class="new-here-faq-bullet">✓</span> Where do I park?
+        </div>
+        <div class="new-here-faq-item">
+          <span class="new-here-faq-bullet">✓</span> What about my kids?
+        </div>
+        <div class="new-here-faq-item">
+          <span class="new-here-faq-bullet">✓</span> How long is the service?
+        </div>
+      </div>
+      <a href="faqs.html" class="new-here-faq-link">View All FAQs ➔</a>
+    </div>
+  </div>
+</section>
 
-      document.getElementById("days").innerText = String(days).padStart(2, '0');
-      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
 
-    }, 1000);
+<!-- ══════════════════ TCE SCHOOL ══════════════════ -->
+<section class="school" id="school">
+  <div class="school-inner">
+    <div class="school-left">
+      <div class="school-top-row">
+        <div class="school-badge-box">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        </div>
+        <div class="school-badge-text">TCE School</div>
+      </div>
 
-    // FORM SUBMIT DEMO
-    document.querySelector(".notify-form").addEventListener("submit", function(e) {
-      e.preventDefault();
+      <h2>TCE School of the Teaching Ministry</h2>
 
-      const button = this.querySelector("button");
-      button.innerText = "Subscribed ✓";
-      button.style.opacity = "0.9";
+      <p class="school-desc">
+        Deepen your understanding of Scripture and develop your teaching gifts through our
+        comprehensive ministry training program. Learn, lead, and serve with confidence
+        through focused training for kingdom ministry.
+      </p>
 
-      setTimeout(() => {
-        button.innerText = "Notify Me";
-      }, 3000);
+      <div class="school-features">
+        <div class="school-feature-card">
+          <div class="school-feature-icon red"><i class="fa fa-book" aria-hidden="true"></i></div>
+          <div class="school-feature-text">In-depth Biblical Studies</div>
+        </div>
+        <div class="school-feature-card">
+          <div class="school-feature-icon purple"><i class="fa fa-users" aria-hidden="true"></i></div>
+          <div class="school-feature-text">Expert Instructors</div>
+        </div>
+        <div class="school-feature-card">
+          <div class="school-feature-icon dark"><i class="fa fa-award" aria-hidden="true"></i></div>
+          <div class="school-feature-text">Certificate Programs</div>
+        </div>
+        <div class="school-feature-card">
+          <div class="school-feature-icon maroon"><i class="fa fa-hands-helping" aria-hidden="true"></i></div>
+          <div class="school-feature-text">Mentorship</div>
+        </div>
+      </div>
 
-      this.reset();
-    });
-  </script>
+      <a href="school.html" class="school-cta">Enroll Now →</a>
+    </div>
+
+    <div class="school-right">
+      <div class="school-image" role="img" aria-label="TCE School of Ministry"></div>
+      <div class="school-stats-card">
+        <div class="school-stat-block">
+          <span class="school-stat-num">500+</span>
+          <span class="school-stat-label">Graduates</span>
+        </div>
+        <div class="school-stat-block">
+          <span class="school-stat-num">12</span>
+          <span class="school-stat-label">Courses</span>
+        </div>
+        <div class="school-stat-block">
+          <span class="school-stat-num">8</span>
+          <span class="school-stat-label">Instructors</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-top">
+        <div class="footer-brand-logo">
+          <img src="assets/images/logo-with-text.png" alt="The Change Embassy" loading="lazy">
+        </div>
+      </div>
+      <p class="footer-brand-copy">
+        A place where faith comes alive. Join our community and experience the
+        transforming power of God's love.
+      </p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/thechangeembassy" class="footer-social" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/thechangeembassy" class="footer-social" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.youtube.com/@thechangeembassy" class="footer-social" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" class="footer-social" aria-label="Twitter / X"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="index.html#departments">Departments</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="give.html">Give</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Ministries</div>
+      <ul class="footer-links">
+        <li><a href="ministries.html">Youth Ministry</a></li>
+        <li><a href="ministries.html">Women's Ministry</a></li>
+        <li><a href="ministries.html">Men's Ministry</a></li>
+        <li><a href="ministries.html">Children's Ministry</a></li>
+        <li><a href="ministries.html">Outreach</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Service Times</div>
+      <div class="footer-time-block">
+        <div class="footer-time-day">Sunday</div>
+        <div class="footer-time-hours">8:00 AM</div>
+      </div>
+      <div class="footer-time-block">
+        <div class="footer-time-day">Wednesday</div>
+        <div class="footer-time-hours">6:00 PM</div>
+      </div>
+    </div>
+
+    <div class="footer-contact">
+      <div class="footer-col-title">Contact Us</div>
+      <div class="footer-contact-item">
+        <i class="fa fa-map-marker-alt footer-contact-icon" aria-hidden="true"></i>
+        <span>HOKF Gardens, 794 Ngozi Okonjo-Iweala Wy, Utako, Abuja 900108, FCT</span>
+      </div>
+      <div class="footer-contact-item">
+        <i class="fa fa-phone footer-contact-icon" aria-hidden="true"></i>
+        <span>0815 143 3007</span>
+      </div>
+      <div class="footer-contact-item">
+        <i class="fa fa-envelope footer-contact-icon" aria-hidden="true"></i>
+        <span>hello@tceglobal.com</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 The Change Embassy. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/youtube-config.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+
+<!-- ══════════════════ YOUTUBE LIVE MODAL ══════════════════ -->
+<div id="live-modal" class="live-modal" role="dialog" aria-labelledby="live-modal-title" aria-hidden="true">
+  <div class="live-modal-overlay" id="live-modal-overlay"></div>
+  <div class="live-modal-content">
+    <div class="live-modal-header">
+      <h2 id="live-modal-title">Watch Live Stream</h2>
+      <button type="button" class="live-modal-close" id="live-modal-close" aria-label="Close live stream"><i class="fa fa-times" aria-hidden="true"></i></button>
+    </div>
+    <div class="live-modal-body">
+      <div class="youtube-embed-wrapper">
+        <iframe 
+          id="youtube-player"
+          class="youtube-embed" 
+          title="Dr. Williams Bukola Live Stream"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
