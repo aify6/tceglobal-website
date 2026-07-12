@@ -63,6 +63,24 @@
     if (e.key === 'Escape') closeMobileMenu();
   });
 
+  /* ─── GIVE NOW BUTTON ─── */
+  document.querySelectorAll('.btn-give-now').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const href = btn.getAttribute('href');
+      if (!href) return;
+
+      const rect = btn.getBoundingClientRect();
+      const clickX = e.clientX;
+      const clickY = e.clientY;
+      const insideButton = clickX >= rect.left && clickX <= rect.right && clickY >= rect.top && clickY <= rect.bottom;
+
+      if (!insideButton) return;
+
+      e.preventDefault();
+      window.location.assign(href);
+    });
+  });
+
   /* ─── FAQ TOGGLE ─── */
   function toggleFaq(el) {
     const ans = el.nextElementSibling;
