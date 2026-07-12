@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – The Change Embassy</title>
+  <meta name="description" content="Get in touch with The Change Embassy in Abuja, Nigeria. We'd love to hear from you.">
+  <link rel="canonical" href="https://www.tceglobal.com/contact.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Favicons -->
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/images/favicon.ico" sizes="any">
+</head>
+<body>
+<nav id="main-nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo">
+    <img
+      src="assets/images/logo-with-text.png"
+      alt="The Change Embassy"
+      class="nav-logo-img"
+      width="160"
+      height="56"
+    >
+  </a>
+
+  <div class="nav-links" id="mobile-menu" role="menubar">
+    <a href="index.html" role="menuitem">Home</a>
+    <a href="about.html" role="menuitem">About Us</a>
+    <a href="leadership.html" role="menuitem">Leadership</a>
+    <a href="ministries.html" role="menuitem">Ministries</a>
+    <a href="contact.html" role="menuitem">Contact</a>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:12px">
+    <button
+      class="nav-hamburger"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      onclick="toggleMobileMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="page-hero" style="background:linear-gradient(rgba(26,0,0,0.82),rgba(26,0,0,0.82)),url('assets/images/hero-contact.webp') center/cover no-repeat">
+  <div class="page-hero-badge"><i class="fa fa-envelope"></i> GET IN TOUCH</div>
+  <h1>We'd Love to <span style="color:var(--gold)">Hear From You</span></h1>
+  <p>Have a question, prayer request, or want to connect? Our team is ready to welcome you.</p>
+</div>
+
+<section class="page-section">
+  <div class="contact-grid">
+    <!-- Form -->
+    <div>
+      <div class="section-label">SEND A MESSAGE</div>
+      <h2 style="font-size:clamp(24px,4vw,38px);font-weight:900;margin:14px 0 28px">How Can We Help?</h2>
+      <div class="contact-form-group">
+        <label for="cf-name">Full Name</label>
+        <input type="text" id="cf-name" placeholder="Your full name" autocomplete="name">
+      </div>
+      <div class="contact-form-group">
+        <label for="cf-email">Email Address</label>
+        <input type="email" id="cf-email" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="contact-form-group">
+        <label for="cf-phone">Phone Number</label>
+        <input type="tel" id="cf-phone" placeholder="+234 800 000 0000" autocomplete="tel">
+      </div>
+      <div class="contact-form-group">
+        <label for="cf-subject">Subject</label>
+        <select id="cf-subject">
+          <option value="">Select a subject</option>
+          <option>General Inquiry</option>
+          <option>Prayer Request</option>
+          <option>Visiting the Church</option>
+          <option>Ministry Partnership</option>
+          <option>TCE School Enrollment</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="contact-form-group">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" placeholder="Write your message here…"></textarea>
+      </div>
+      <button type="button" class="btn-submit" onclick="alert('Thank you! Your message has been received. We will get back to you shortly.')">Send Message →</button>
+    </div>
+
+    <!-- Info -->
+    <div>
+      <div class="section-label">FIND US</div>
+      <h2 style="font-size:clamp(24px,4vw,38px);font-weight:900;margin:14px 0 28px">Visit Our Location</h2>
+      <div class="contact-info-item">
+        <div class="contact-info-icon"><i class="fa fa-map-marker-alt"></i></div>
+        <div>
+          <div class="contact-info-label">Physical Address</div>
+          <div class="contact-info-val">HOKF Gardens, 794 Ngozi Okonjo-Iweala Way,<br>Utako, Abuja 900108, FCT, Nigeria</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon"><i class="fa fa-phone"></i></div>
+        <div>
+          <div class="contact-info-label">Phone</div>
+          <div class="contact-info-val">0815 143 3007</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon"><i class="fa fa-envelope"></i></div>
+        <div>
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-val">hello@tceglobal.com</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon"><i class="fa fa-clock"></i></div>
+        <div>
+          <div class="contact-info-label">Service Times</div>
+          <div class="contact-info-val">Sunday: 8:00 AM<br>Wednesday: 6:00 PM</div>
+        </div>
+      </div>
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.0692127123257!2d7.441921811789416!3d9.057451590967524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b593d3b6d47%3A0x1fcc37691f83479c!2sThe%20Change%20Embassy!5e0!3m2!1sen!2sng!4v1780046192565!5m2!1sen!2sng"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="The Change Embassy Location - HOKF Gardens"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-top">
+        <div class="footer-brand-logo">
+          <img src="assets/images/logo-with-text.png" alt="The Change Embassy" loading="lazy">
+        </div>
+      </div>
+      <p class="footer-brand-copy">
+        A place where faith comes alive. Join our community and experience the
+        transforming power of God's love.
+      </p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/thechangeembassy" class="footer-social" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/thechangeembassy" class="footer-social" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.youtube.com/@thechangeembassy" class="footer-social" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" class="footer-social" aria-label="Twitter / X"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="index.html#departments">Departments</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Ministries</div>
+      <ul class="footer-links">
+        <li><a href="ministries.html">Youth Ministry</a></li>
+        <li><a href="ministries.html">Women's Ministry</a></li>
+        <li><a href="ministries.html">Men's Ministry</a></li>
+        <li><a href="ministries.html">Children's Ministry</a></li>
+        <li><a href="ministries.html">Outreach</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Service Times</div>
+      <div class="footer-time-block">
+        <div class="footer-time-day">Sunday</div>
+        <div class="footer-time-hours">8:00 AM</div>
+      </div>
+      <div class="footer-time-block">
+        <div class="footer-time-day">Wednesday</div>
+        <div class="footer-time-hours">6:00 PM</div>
+      </div>
+    </div>
+
+    <div class="footer-contact">
+      <div class="footer-col-title">Contact Us</div>
+      <div class="footer-contact-item">
+        <i class="fa fa-map-marker-alt footer-contact-icon" aria-hidden="true"></i>
+        <span>HOKF Gardens, 794 Ngozi Okonjo-Iweala Wy, Utako, Abuja 900108, FCT</span>
+      </div>
+      <div class="footer-contact-item">
+        <i class="fa fa-phone footer-contact-icon" aria-hidden="true"></i>
+        <span>0815 143 3007</span>
+      </div>
+      <div class="footer-contact-item">
+        <i class="fa fa-envelope footer-contact-icon" aria-hidden="true"></i>
+        <span>hello@tceglobal.com</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 The Change Embassy. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

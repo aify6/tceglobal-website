@@ -1,2 +1,3 @@
-# tceglobal-website
-The official website of The Change Embassy, Abuja 
+# The Change Embassy — Website
+
+Production-ready static website for The Change Embassy church.
