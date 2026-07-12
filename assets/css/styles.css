@@ -311,6 +311,11 @@ nav.scrolled { background: rgba(26,0,0,0.97); }
 .btn-see-more:hover { background: #d33d3d; transform: translateY(-1px); }
 
 .btn-give-now {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   align-self: flex-start;
   background: var(--gold);
   color: var(--dark);
@@ -324,6 +329,7 @@ nav.scrolled { background: rgba(26,0,0,0.97); }
   box-shadow: 0 18px 48px rgba(205,157,43,0.12);
   transition: background 0.18s, transform 0.12s;
   text-decoration: none;
+  pointer-events: auto;
 }
 .btn-give-now:hover { background: #b8891f; transform: translateY(-2px); }
 
@@ -743,10 +749,14 @@ nav.scrolled { background: rgba(26,0,0,0.97); }
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 0;
+  pointer-events: none;
   background: radial-gradient(ellipse at center, rgba(205,157,43,0.08) 0%, transparent 70%);
 }
 
 .partner-inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr minmax(360px, 520px);
   gap: 40px;
@@ -755,6 +765,12 @@ nav.scrolled { background: rgba(26,0,0,0.97); }
   margin: 0 auto;
   align-items: start;
   box-sizing: border-box;
+}
+
+.partner-copy,
+.partner-right {
+  position: relative;
+  z-index: 1;
 }
 
 .partner-copy {
