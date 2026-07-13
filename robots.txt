@@ -1,5 +1,11 @@
 User-agent: *
 Allow: /
-Disallow: /assets/
+Allow: /assets/
+
+# Disallow search engines from indexing private areas (adjust as needed)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
 
 Sitemap: https://www.tceglobal.com/sitemap.xml
+Crawl-delay: 1
