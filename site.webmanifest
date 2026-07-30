@@ -1,8 +1,8 @@
 {
   "name": "The Change Embassy",
   "short_name": "TCE",
-  "description": "A vibrant community rooted in African heritage and Kingdom power, where worship, wisdom, and transformation come alive.",
-  "start_url": "https://www.tceglobal.com/",
+  "description": "A church rooted in God's word and Kingdom power, where worship, wisdom, and transformation come alive.",
+  "start_url": "https://www.tceglobal.org/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -47,7 +47,7 @@
       "name": "About Us",
       "short_name": "About",
       "description": "Learn about The Change Embassy",
-      "url": "https://www.tceglobal.com/about.html",
+      "url": "https://www.tceglobal.org/about.html",
       "icons": [
         {
           "src": "/assets/images/favicon.svg",
@@ -60,7 +60,7 @@
       "name": "Contact",
       "short_name": "Contact",
       "description": "Get in touch with us",
-      "url": "https://www.tceglobal.com/contact.html",
+      "url": "https://www.tceglobal.org/contact.html",
       "icons": [
         {
           "src": "/assets/images/favicon.svg",

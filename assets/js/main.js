@@ -81,19 +81,96 @@
     });
   });
 
+  /* ─── CONTACT FORM ─── */
+  (function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    const status = document.createElement('p');
+    status.id = 'contact-form-status';
+    status.className = 'form-status';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    form.appendChild(status);
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      const formData = new FormData(form);
+      const payload = {
+        name: formData.get('name') || '',
+        email: formData.get('email') || '',
+        phone: formData.get('phone') || '',
+        subject: formData.get('subject') || '',
+        message: formData.get('message') || '',
+        _subject: formData.get('_subject') || 'New message from tceglobal.org contact form',
+        _captcha: formData.get('_captcha') || 'false',
+        _template: 'table'
+      };
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+      }
+      status.textContent = '';
+      status.style.color = '';
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/aifycorp@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error(`Request failed: ${response.status}`);
+        }
+
+        form.reset();
+        status.textContent = 'Thanks! Your message has been received. We will be in touch soon.';
+        status.style.color = '#2e7d32';
+      } catch (error) {
+        status.textContent = 'We could not send the message right now. Please email hello@tceglobal.com directly.';
+        status.style.color = '#b21d1d';
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Send Message →';
+        }
+      }
+    });
+  }());
+
   /* ─── FAQ TOGGLE ─── */
   function toggleFaq(el) {
     const ans = el.nextElementSibling;
     if (!ans) return;
     const isOpen = ans.classList.contains('open');
     document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
-    document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.classList.remove('open');
+      q.setAttribute('aria-expanded', 'false');
+    });
     if (!isOpen) {
       ans.classList.add('open');
       el.classList.add('open');
+      el.setAttribute('aria-expanded', 'true');
     }
   }
   window.toggleFaq = toggleFaq;
+
+  document.querySelectorAll('.faq-q').forEach((faq) => {
+    faq.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleFaq(faq);
+      }
+    });
+  });
 
   /* ─── LEADERS CAROUSEL ─── */
   (function initLeadersCarousel() {
@@ -138,7 +215,8 @@
     const concluded = document.getElementById('event-concluded');
     if (!cdDays || !cdHrs || !cdMin || !cdSec) return;
 
-    const TARGET = new Date('2026-06-24T19:00:00');
+    // TODO: confirm exact Prophetic Shift Conference date/time
+    const TARGET = new Date('2026-10-03T19:00:00');
     function pad(n) { return String(n).padStart(2, '0'); }
 
     function updateCountdown() {
