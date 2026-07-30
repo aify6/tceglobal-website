@@ -2014,6 +2014,12 @@ footer { background: #0c0a0a; color: #fff; padding: 80px 88px 32px; }
   transition: background 0.2s;
 }
 .btn-submit:hover { background: #b81e1e; }
+.form-status {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  min-height: 22px;
+}
 .contact-info-item {
   display: flex;
   gap: 16px;

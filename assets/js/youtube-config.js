@@ -21,7 +21,7 @@ window.YOUTUBE_CONFIG = {
   // Your YouTube API key (optional - site works without it)
   API_KEY: 'YOUR_YOUTUBE_API_KEY_HERE',
 
-  // Channel handle
+  // Watch Live links to Dr. Bukola Williams' channel intentionally; footer social links use the main church channel @thechangeembassy
   CHANNEL_HANDLE: '@Drwilliamsbukola'
 };
 
