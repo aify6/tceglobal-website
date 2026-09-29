@@ -1557,7 +1557,7 @@ footer { background: #0c0a0a; color: #fff; padding: 80px 88px 32px; }
   .psc-countdown { gap: 14px; }
   .psc-countdown .countdown-num { font-size: 20px; }
   .psc-page-intro { padding: 30px 18px 34px; }
-  .psc-home-hero { min-height: 0; padding: 0 20px 30px; flex-direction: column; align-items: stretch; background: var(--dark); }
+  .psc-home-hero { min-height: 0; padding: 0 20px 4px; flex-direction: column; align-items: stretch; background: var(--dark); }
   .psc-home-hero::before { content: ''; position: absolute; inset: 0 0 auto; height: min(62vw, 285px); background: #100707 url('../images/psc hero.png') center / contain no-repeat; }
   .psc-home-content { padding-top: calc(min(62vw, 285px) + 8px); }
   .psc-home-kicker { font-size: 10px; letter-spacing: 1.4px; }
