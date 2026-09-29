@@ -207,33 +207,34 @@
 
   /* ─── COUNTDOWN TIMER ─── */
   (function initCountdown() {
-    const cdDays = document.getElementById('cd-days');
-    const cdHrs  = document.getElementById('cd-hrs');
-    const cdMin  = document.getElementById('cd-min');
-    const cdSec  = document.getElementById('cd-sec');
-    const wrap   = document.getElementById('countdown-wrap');
-    const concluded = document.getElementById('event-concluded');
-    if (!cdDays || !cdHrs || !cdMin || !cdSec) return;
+    const countdowns = document.querySelectorAll('[data-countdown]');
+    if (!countdowns.length) return;
 
-    // TODO: confirm exact Prophetic Shift Conference date/time
-    const TARGET = new Date('2026-10-03T19:00:00');
     function pad(n) { return String(n).padStart(2, '0'); }
 
-    function updateCountdown() {
-      const diff = TARGET - Date.now();
-      if (diff <= 0) {
-        if (wrap) wrap.style.display = 'none';
-        if (concluded) concluded.style.display = 'flex';
-        return;
-      }
-      cdDays.textContent = pad(Math.floor(diff / 86_400_000));
-      cdHrs.textContent  = pad(Math.floor((diff % 86_400_000) / 3_600_000));
-      cdMin.textContent  = pad(Math.floor((diff % 3_600_000)  /    60_000));
-      cdSec.textContent  = pad(Math.floor((diff %    60_000)  /     1_000));
-    }
+    countdowns.forEach((countdown) => {
+      const [cdDays, cdHrs, cdMin, cdSec] = countdown.querySelectorAll('.countdown-num');
+      if (!cdDays || !cdHrs || !cdMin || !cdSec) return;
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+      const target = new Date(countdown.dataset.countdownTarget || '2026-10-02T17:00:00');
+      const concluded = countdown.closest('.featured-event')?.querySelector('.event-concluded-msg');
+
+      function updateCountdown() {
+        const diff = target - Date.now();
+        if (diff <= 0) {
+          countdown.style.display = 'none';
+          if (concluded) concluded.style.display = 'flex';
+          return;
+        }
+        cdDays.textContent = pad(Math.floor(diff / 86_400_000));
+        cdHrs.textContent  = pad(Math.floor((diff % 86_400_000) / 3_600_000));
+        cdMin.textContent  = pad(Math.floor((diff % 3_600_000)  /    60_000));
+        cdSec.textContent  = pad(Math.floor((diff %    60_000)  /     1_000));
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    });
   }());
 
   /* ─── SCROLL-IN ANIMATION ─── */
