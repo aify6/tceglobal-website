@@ -151,6 +151,54 @@ nav.scrolled { background: rgba(26,0,0,0.97); }
 }
 
 /* ─── HERO ─── */
+.psc-home-hero {
+  min-height: min(760px, 88vh);
+  padding: 112px 8vw 90px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(15,0,0,0.94) 0%, rgba(26,0,0,0.78) 48%, rgba(26,0,0,0.12) 100%), url('../images/psc hero.png') center 42% / cover no-repeat;
+}
+
+.psc-home-content { position: relative; z-index: 1; max-width: 690px; }
+.psc-home-kicker { display: flex; align-items: center; gap: 10px; color: var(--gold); font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+.psc-home-kicker i { font-size: 17px; }
+.psc-home-hero h2 { color: #fff; font-size: clamp(44px, 7vw, 82px); font-weight: 900; line-height: 1.02; margin: 20px 0 14px; }
+.psc-home-hero h2 span { color: var(--gold); }
+.psc-home-date { color: #fff; font-size: clamp(20px, 3vw, 28px); font-weight: 700; margin-bottom: 16px; }
+.psc-home-copy { max-width: 580px; color: rgba(255,255,255,0.86); font-size: 17px; line-height: 1.8; margin-bottom: 28px; }
+.psc-home-cta { display: inline-flex; width: auto; gap: 12px; align-items: center; text-decoration: none; }
+.psc-home-mark { position: absolute; right: 5vw; bottom: 28px; color: rgba(255,255,255,0.78); font-size: 13px; font-weight: 800; letter-spacing: 3px; }
+.psc-home-mark span { color: var(--gold); }
+
+.psc-countdown { gap: 20px; margin: 14px 0 20px; }
+.psc-countdown .countdown-box { min-width: 48px; padding: 0; background: transparent; text-align: left; }
+.psc-countdown .countdown-num { font-size: 22px; line-height: 1; font-weight: 700; }
+.psc-countdown .countdown-label { margin-top: 5px; font-size: 9px; }
+.psc-page-hero { background: var(--dark); }
+.psc-page-hero-image { width: 100%; max-height: none; object-fit: contain; object-position: center; background: #100707; }
+.psc-page-intro { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 38px 24px 42px; text-align: center; color: #fff; }
+.psc-page-intro h1 { max-width: 900px; font-size: clamp(32px, 5vw, 58px); line-height: 1.1; }
+.psc-page-intro p { color: rgba(255,255,255,0.8); font-size: 17px; }
+.psc-page-intro .psc-countdown { margin: 6px 0 0; }
+.psc-page-intro .psc-countdown .countdown-box { text-align: center; }
+.psc-page-intro .psc-countdown .countdown-num { color: #fff; }
+.psc-page-intro .psc-countdown .countdown-label { color: rgba(255,255,255,0.68); }
+.psc-content { padding: 72px max(24px, calc((100% - 1180px) / 2)); background: #fff; }
+.psc-content-heading { margin-bottom: 30px; }
+.psc-content-heading .section-label { color: var(--red); }
+.psc-content-heading h2 { color: var(--dark); font-size: clamp(30px, 4vw, 44px); line-height: 1.15; margin: 12px 0; }
+.psc-content-heading p { max-width: 700px; color: #4b4b4b; line-height: 1.8; }
+.psc-details-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 0.82fr); gap: 34px; align-items: start; }
+.psc-flyer { width: 100%; max-width: 530px; margin: 0 auto; border-radius: 8px; box-shadow: 0 16px 40px rgba(26,0,0,0.14); }
+.psc-info-list { display: grid; gap: 14px; margin: 26px 0; }
+.psc-info-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px; border-left: 3px solid var(--gold); background: #f7f7f7; }
+.psc-info-item i { width: 20px; color: var(--red); margin-top: 4px; }
+.psc-info-item strong { display: block; color: var(--dark); margin-bottom: 3px; }
+.psc-info-item span { color: #555; }
+
 .hero {
   min-height: 100vh;
   background:
@@ -1406,6 +1454,10 @@ footer { background: #0c0a0a; color: #fff; padding: 80px 88px 32px; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
+  .psc-home-hero { min-height: 660px; padding: 105px 24px 80px; background-position: 58% center; }
+  .psc-home-content { max-width: 600px; }
+  .psc-details-grid { grid-template-columns: 1fr; }
+  .psc-flyer { max-width: 460px; }
   /* Nav */
   nav             { padding: 14px 24px; }
   .nav-hamburger  { display: flex; }
@@ -1500,6 +1552,21 @@ footer { background: #0c0a0a; color: #fff; padding: 80px 88px 32px; }
 }
 
 @media (max-width: 600px) {
+  .psc-home-hero { min-height: 620px; padding: 90px 20px 70px; align-items: flex-end; background-position: 62% center; background-image: linear-gradient(0deg, rgba(15,0,0,0.94) 0%, rgba(26,0,0,0.76) 58%, rgba(26,0,0,0.18) 100%), url('../images/psc hero.png'); }
+  .psc-home-copy { font-size: 15px; }
+  .psc-countdown { gap: 14px; }
+  .psc-countdown .countdown-num { font-size: 20px; }
+  .psc-page-intro { padding: 30px 18px 34px; }
+  .psc-home-hero { min-height: 0; padding: 0 20px 30px; flex-direction: column; align-items: stretch; background: var(--dark); }
+  .psc-home-hero::before { content: ''; position: absolute; inset: 0 0 auto; height: min(62vw, 285px); background: #100707 url('../images/psc hero.png') center / contain no-repeat; }
+  .psc-home-content { padding-top: calc(min(62vw, 285px) + 8px); }
+  .psc-home-kicker { font-size: 10px; letter-spacing: 1.4px; }
+  .psc-home-hero h2 { font-size: 32px; line-height: 1.08; margin: 12px 0 8px; }
+  .psc-home-date { font-size: 16px; margin-bottom: 12px; }
+  .psc-home-copy { font-size: 13px; line-height: 1.55; margin-bottom: 18px; }
+  .psc-home-mark { position: relative; inset: auto; align-self: flex-end; margin-top: 18px; }
+  .psc-home-cta { width: 100%; justify-content: center; }
+  .psc-content { padding: 50px 20px; }
   nav { padding: 12px 18px; }
   .nav-logo-img { height: 48px; }
   .nav-links { width: 100vw; max-width: 100vw; }
